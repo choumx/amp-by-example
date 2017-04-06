@@ -330,56 +330,56 @@ a.item {
         </div>
       </amp-lightbox>
     <!-- ## Slides preview Gallery -->
-    <!--On desktop we've added a film strip like slide preview. Each product colour has its own image gallery and slide preview.
+    <!--On desktop we've added a film strip like slide preview. Each product color has its own image gallery and slide preview.
     We use [amp-bind](https://www.ampproject.org/docs/reference/components/amp-bind) to update the page selecting the gallery and image preview
-    corresponding to the selected colour. We realized the color selection by using `amp-selector`. Find more the doc and info in The Product Page section below.
+    corresponding to the selected color. We realized the color selection by using `amp-selector`. Find more the doc and info in The Product Page section below.
 
-    The green colour is the default color for the gallery when the page loads.
+    The green color is the default color for the gallery when the page loads.
     Clicking on a preview image will reveal the image in the gallery via the tap action `on="tap:product-carousel-preview.goToSlide(index=0)"`.
 
     See below for more informations on how we use`amp-bind`. -->
   <div class="product-gallery">
-    <ul class="show" [class]="selectedColor == 'green' ? 'show' : 'hide'">
+    <ul class="show" [class]="selected.color == 'green' ? 'show' : 'hide'">
       <li tabindex="0" role="button">
-        <amp-img on="tap:AMP.setState({selectedSlide: 0})"
+        <amp-img on="tap:AMP.setState({selected: {slide: 0}})"
                   src="/img/green_apple_1_60x40.jpg"
                   width="60" height="40"
                   class="selected"
-                  [class]="selectedSlide == 0 ? 'selected' : '' ">
+                  [class]="selected.slide == 0 ? 'selected' : '' ">
         </amp-img>
       </li>
       <li tabindex="1" role="button">
-        <amp-img on="tap:AMP.setState({selectedSlide: 1})"
+        <amp-img on="tap:AMP.setState({selected: {slide: 1}})"
                   src="/img/green_apple_2_60x40.jpg"
                   width="60" height="40"
-                  [class]="selectedSlide == 1 ? 'selected' : '' ">
+                  [class]="selected.slide == 1 ? 'selected' : '' ">
         </amp-img>
       </li>
     </ul>
 
-    <ul class="hide" [class]="selectedColor == 'golden' ? 'show' : 'hide'">
+    <ul class="hide" [class]="selected.color == 'golden' ? 'show' : 'hide'">
       <li tabindex="0" role="button">
-        <amp-img on="tap:AMP.setState({selectedSlide: 0})"
+        <amp-img on="tap:AMP.setState({selected: {slide: 0}})"
                 src="/img/product1_alt1_60x40.jpg"
                  width="60" height="40"
-                 [class]="selectedSlide == 0 ? 'selected' : '' ">
+                 [class]="selected.slide == 0 ? 'selected' : '' ">
         </amp-img>
       </li>
     </ul>
 
-    <ul class="hide" [class]="selectedColor == 'red' ? 'show' : 'hide'">
+    <ul class="hide" [class]="selected.color == 'red' ? 'show' : 'hide'">
       <li tabindex="0" role="button">
-        <amp-img on="tap:AMP.setState({selectedSlide: 0})"
+        <amp-img on="tap:AMP.setState({selected: {slide: 0}})"
                  src="/img/red_apple_1_60x40.jpg"
                  width="60" height="40"
-                 [class]="selectedSlide == 0 ? 'selected' : '' ">
+                 [class]="selected.slide == 0 ? 'selected' : '' ">
         </amp-img>
       </li>
       <li tabindex="1" role="button">
-        <amp-img on="tap:AMP.setState({selectedSlide: 1})"
+        <amp-img on="tap:AMP.setState({selected: {slide: 1}})"
                  src="/img/red_apple_2_60x46.jpg"
                  width="60" height="40"
-                 [class]="selectedSlide == 1 ? 'selected' : '' ">
+                 [class]="selected.slide == 1 ? 'selected' : '' ">
         </amp-img>
       </li>
     </ul>
@@ -387,17 +387,17 @@ a.item {
    <!-- ## Image Gallery -->
   <!-- The `amp-carousel` component works very well for product image galleries. Learn how the `amp-carousel` component works [here](/advanced/image_galleries_with_amp-carousel/).
 
-  Notice how we are binding to the `slide` and `class` by using to the values of the variables `selectedSlide` and `selectedColor`. -->
+  Notice how we are binding to the `slide` and `class` by using to the values of the variables `selected.slide` and `selected.color`. -->
   <div class="product-gallery">
 
     <amp-carousel id="green-apple-carousel"
             width="1024" height="682"
             layout="responsive"
             type="slides"
-            [slide]="selectedSlide"
-            on="goToSlide:AMP.setState({selectedSlide: event.index})"
+            [slide]="selected.slide"
+            on="goToSlide:AMP.setState({selected: {slide: event.index}})"
             class="show"
-            [class]="selectedColor == 'green' ? 'show' : 'hide'">
+            [class]="selected.color == 'green' ? 'show' : 'hide'">
       <amp-img src="/img/green_apple_1_1024x682.jpg"
                 width="1024" height="682"
                 layout="responsive">
@@ -412,10 +412,10 @@ a.item {
             width="1024" height="682"
             layout="responsive"
             type="slides"
-            [slide]="selectedSlide"
-            on="goToSlide:AMP.setState({selectedSlide: event.index})"
+            [slide]="selected.slide"
+            on="goToSlide:AMP.setState({selected: {slide: event.index}})"
             class="hide"
-            [class]="selectedColor == 'golden' ? 'show' : 'hide'">
+            [class]="selected.color == 'golden' ? 'show' : 'hide'">
         <amp-img src="/img/golden_apple1_1024x682.jpg"
                 width="1024" height="682"
                 layout="responsive">
@@ -426,10 +426,10 @@ a.item {
             width="1024" height="682"
             layout="responsive"
             type="slides"
-            [slide]="selectedSlide"
-            on="goToSlide:AMP.setState({selectedSlide: event.index})"
+            [slide]="selected.slide"
+            on="goToSlide:AMP.setState({selected: {slide: event.index}})"
             class="hide"
-            [class]="selectedColor == 'red' ? 'show' : 'hide'">
+            [class]="selected.color == 'red' ? 'show' : 'hide'">
         <amp-img src="/img/red_apple_1_1024x682.jpg"
                 width="1024" height="682"
                 layout="responsive">
@@ -444,7 +444,7 @@ a.item {
   <!-- ## Product Configuration -->
   <!-- We use the `amp-state` component (part of [amp-bind](https://www.ampproject.org/docs/reference/components/amp-bind))
       to configure the product price depending on the color and the size. We also configure the `defaultSize`
-      for each product when you switch between colours and the size you previously selected is not available for the new color -->
+      for each product when you switch between colors and the size you previously selected is not available for the new color. -->
   <amp-state id="product">
     <script type="application/json">
     {
@@ -476,22 +476,35 @@ a.item {
     </script>
   </amp-state>
 
+  <!-- ## Setting default values for variables. -->
+  <!-- We use another `amp-state` element to initialize default values for variables tracking the current user-selected color,
+       size, and image carousel slide. -->
+  <amp-state id="selected">
+    <script type="application/json">
+    {
+      "color": "green",
+      "size": "S",
+      "slide": 0
+    }
+    </script>
+  </amp-state>
+
     <!-- ## Product price -->
     <!-- We use [amp-bind](https://www.ampproject.org/docs/reference/components/amp-bind) to update the price of the product
-      depending on the selected colour.
+      depending on the selected color.
 
     We bind the `text` attribute to the
-      value of expression `product[selectedColor].price`. `product` is the id `amp-state` json described in the Product Configuration section.
+      value of expression `product[selected.color].price`. `product` is the id `amp-state` json described in the Product Configuration section.
 
     Notice how we set a default value for the price: values defined inside `amp-state`
       will not be accessed at the page load. We set `green` and `S` as default color and default size
       as the correspondent variables have `null` value at default.
 
      We use `amp-selector` together with `amp-bind` to update the page for showing the price, the size availability, the gallery and preview of images.
-    Every time you select a color, we call `AMP.setState` with `{selectedColor: event.targetOption}`. This is triggering
-    all the attributes and elements binded to `selectedColor` to update: the price (binded with the attribute `[text]`), the gallery, the image preview and the size selector (all binded with `[class]`). -->
+    Every time you select a color, we call `AMP.setState` with `{selected: {color: event.targetOption}}`. This is triggering
+    all the attributes and elements binded to `selected.color` to update: the price (binded with the attribute `[text]`), the gallery, the image preview and the size selector (all binded with `[class]`). -->
       <p class="price-description">Price:
-        <span [text]="product[selectedColor || 'green'].sizes[selectedSize || 'S']">$1.99</span>
+        <span [text]="product[selected.color].sizes[selected.size]">$1.99</span>
     </p>
 
     <!-- ## Product page -->
@@ -512,11 +525,13 @@ a.item {
           <label for="color">Color:</label>
           <amp-selector name="color"
                   layout="container"
-                  [selected]="selectedColor"
+                  [selected]="selected.color"
                   on="select:AMP.setState({
-                    selectedColor: event.targetOption,
-                    selectedSlide: 0,
-                    selectedSize: product[event.targetOption].sizes[selectedSize] ? selectedSize : product[event.targetOption].defaultSize
+                    selected: {
+                      color: event.targetOption,
+                      slide: 0,
+                      size: product[event.targetOption].sizes[selected.size] ? selected.size : product[event.targetOption].defaultSize
+                    }
                   })">
             <ul class="p0 m1">
               <li>
@@ -544,21 +559,21 @@ a.item {
         <div class="items-center flex">
           <label for="size">Size:</label>
           <amp-selector name="size" layout="container"
-                  on="select:AMP.setState({selectedSize: event.targetOption})"
-                  [selected]="(product[selectedColor || 'green'].sizes[selectedSize || 'S'] != 'unavailable')
-                      ? selectedSize
-                      : product[selectedColor || 'green'].defaultSize">
+                  on="select:AMP.setState({selected: {size: event.targetOption}})"
+                  [selected]="(product[selected.color].sizes[selected.size] != 'unavailable')
+                      ? selected.size
+                      : product[selected.color].defaultSize">
             <ul class="p0 m1">
               <li option="S" class=""
-                  [class]="(product[selectedColor || 'green'].sizes['S'] != 'unavailable')
+                  [class]="(product[selected.color].sizes['S'] != 'unavailable')
                       ? ''
                       : 'unavailable'">S</li>
               <li option="M" class="" selected
-                  [class]="(product[selectedColor || 'green'].sizes['M'] != 'unavailable')
+                  [class]="(product[selected.color].sizes['M'] != 'unavailable')
                       ? ''
                       : 'unavailable'">M</li>
               <li option="L" class="unavailable"
-                  [class]="(product[selectedColor || 'green'].sizes['L'] != 'unavailable')
+                  [class]="(product[selected.color].sizes['L'] != 'unavailable')
                       ? ''
                       : 'unavailable'">L</li>
             </ul>
